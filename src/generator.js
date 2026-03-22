@@ -36,6 +36,12 @@ char devEui[] = "${devEuiVal}";
 char appKey[] = "${appKeyVal}";
 const bool USE_LORA = true;
 
+// --- CONNECTION STATE (Exponential Backoff) ---
+bool isJoined = false;
+unsigned long lastJoinAttempt = 0;
+unsigned long joinInterval = 15000; // Start retrying after 15 seconds
+const unsigned long MAX_JOIN_INTERVAL = 300000; // Cap retries at max 5 minutes
+
 TinyGPSPlus gps;
 char dataPayload[128];
 
@@ -94,17 +100,19 @@ void setup() {
         lora.setId(NULL, devEui, appEui);
         lora.setDeciveMode(LWOTAA); 
         Serial.println("Connecting to TTN...");
-        int attempts = 0;
-        while(!lora.setOTAAJoin(JOIN, 20) && attempts < 3) {
-            attempts++;
-            Serial.println("Join failed, trying again...");
-            delay(3000);
+        
+        if (lora.setOTAAJoin(JOIN, 20)) {
+            isJoined = true;
+            Serial.println("Successfully joined TTN!");
+        } else {
+            Serial.println("Join failed. Switching to offline logging with background retries.");
+            lastJoinAttempt = millis();
         }
     }
 }
 
 void loop() {
-    // 1. DATA COLLECTION & MATHEMATICS
+    // 1. DATA COLLECTION & MATHEMATICS (Always runs)
     float lat = 0.0, lng = 0.0;
     uint8_t h = 0, m = 0, s = 0;
     
@@ -179,7 +187,7 @@ void loop() {
     }
 
     code += `
-    // 2. SAVE TO BLACK BOX
+    // 2. SAVE TO BLACK BOX (Always runs)
     if (recordCount < MAX_RECORDS) {
         dataLog[recordCount].hr = h;
         dataLog[recordCount].min = m;
@@ -198,7 +206,7 @@ void loop() {
     code += `        recordCount++;
     }
 
-    // 3. LORA PAYLOAD (Compact format for TTN Live Tracking)
+    // 3. LORA PAYLOAD GENERATION
 `;
     
     let formatStr = `%.5f,%.5f`;
@@ -214,12 +222,40 @@ void loop() {
 
     Serial.print("-> Measurement Saved! LoRa Payload: ");
     Serial.println(dataPayload);
-    if (USE_LORA) lora.transferPacket(dataPayload, 10);
+    
+    // 4. SMART LORA TRANSMISSION WITH BACKOFF
+    if (USE_LORA) {
+        if (!isJoined) {
+            // Check if it's time to retry joining
+            if (millis() - lastJoinAttempt >= joinInterval) {
+                Serial.print("Retrying TTN Join... ");
+                if (lora.setOTAAJoin(JOIN, 20)) {
+                    isJoined = true;
+                    joinInterval = 15000; // Reset backoff timer upon success
+                    Serial.println("Success! Now online.");
+                    lora.transferPacket(dataPayload, 10);
+                } else {
+                    Serial.println("Failed.");
+                    lastJoinAttempt = millis();
+                    joinInterval *= 2; // Exponential backoff (double the wait time)
+                    if (joinInterval > MAX_JOIN_INTERVAL) joinInterval = MAX_JOIN_INTERVAL;
+                    Serial.print("Next attempt in ");
+                    Serial.print(joinInterval / 1000);
+                    Serial.println(" seconds.");
+                }
+            } else {
+                Serial.println("Offline mode. Skipping LoRa transmission.");
+            }
+        } else {
+            // We are joined, transmit the payload
+            lora.transferPacket(dataPayload, 10);
+        }
+    }
     
     smartDelay(15000); 
 }
 
-// 4. THE DUMP COMMAND (For CSV Export)
+// 5. THE DUMP COMMAND (For CSV Export)
 void checkSerialCommand() {
     if (Serial.available()) {
         String cmd = Serial.readStringUntil('\\n');
