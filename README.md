@@ -1,6 +1,6 @@
 # GLR Sensor Configurator
 
-A professional, web-based tool for configuring environmental sensors and generating production-ready Arduino C++ code for the **GLR Digital Identity** project. Designed to bridge the gap between physical prototyping and digital data-driven design.
+A professional, web-based tool for configuring environmental sensors and generating production-ready Arduino C++ code for the **GLR LoRaWAN** project. Designed to bridge the gap between physical prototyping and digital data-driven design.
 
 ## Features
 
