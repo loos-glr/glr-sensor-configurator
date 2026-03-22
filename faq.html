@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLR Sensor Configurator | FAQ & Data</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body class="font-body antialiased selection:bg-glr-neon selection:text-black">
+
+    <header class="relative w-full py-6 px-6 border-b border-gray-800">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4 relative">
+            <a href="index.html" class="text-left hover:opacity-80 transition-opacity">
+                <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
+                <h1 class="font-display text-2xl md:text-3xl uppercase leading-tight">
+                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+                </h1>
+            </a>
+            
+            <div class="relative">
+                <button id="menuBtn" class="text-white hover:text-glr-neon focus:outline-none transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[#0F0F0F] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
+                    <a href="index.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Configurator</a>
+                    <a href="hardware.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Hardware Guide</a>
+                    <a href="board.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Board Layout</a>
+                    <a href="faq.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-glr-neon transition-colors border-b border-glr-neon border-opacity-0 hover:border-glr-neon">FAQ & Data</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-5xl mx-auto px-4 py-12 flex-grow">
+        
+        <div class="mb-12 border-l-4 border-glr-neon pl-4">
+            <h2 class="font-display text-2xl uppercase mb-1">FAQ & Data</h2>
+            <p class="text-sm text-glr-gray">Troubleshooting extraction issues & understanding your CSV.</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+            
+            <!-- Section 1: FAQ -->
+            <div>
+                <h3 class="font-bold text-white mb-6 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">1. Troubleshooting Extraction</h3>
+                
+                <div class="space-y-4">
+                    <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg p-5">
+                        <h4 class="text-glr-neon font-bold mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            My GPS is returning 0.000 for Lat/Lon?
+                        </h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            GPS antennas cannot penetrate concrete ceilings. You must have a clear, outside line of sight to connect to satellites. Go outside and wait 1-3 minutes for a solid satellite lock before gathering data.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg p-5">
+                        <h4 class="text-glr-neon font-bold mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            My CSV columns are showing 'NaN'?
+                        </h4>
+                        <p class="text-sm text-gray-400 leading-relaxed">
+                            'NaN' stands for Not-a-Number. This occurs when the board attempts to read a sensor on a specific port (e.g., A0), but the sensor is plugged into the wrong physical port (e.g., D2) or disconnected entirely. Double-check your setup against the Board Layout.
+                        </p>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg p-5">
+                        <h4 class="text-glr-neon font-bold mb-2 flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                            My exported CSV file is completely empty?
+                        </h4>
+                        <p class="text-sm text-gray-400 leading-relaxed text-red-300">
+                            The Seeeduino writes data to an embedded volatile storage when deployed. <b class="text-white">If you disconnect the battery before extracting the data via USB, all volatile data is instantly erased.</b> Maintain power until extraction is complete.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Data Dictionary & Inspiration -->
+            <div>
+                <h3 class="font-bold text-white mb-6 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">2. Data Dictionary & Inspiration</h3>
+                
+                <div class="mb-8">
+                    <h4 class="text-white font-bold mb-4">Values Reference</h4>
+                    <div class="space-y-3">
+                        <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300"><b class="text-glr-neon">Analog Sensors (Light, Sound, Rotary):</b> Output is a percentage (0.0 to 100.0), where 0 is minimum (dark/quiet) and 100 is maximum.</p>
+                        </div>
+                        <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300"><b class="text-glr-neon">Temperature:</b> Output is in degrees Celsius.</p>
+                        </div>
+                        <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300"><b class="text-glr-neon">Ultrasonic Distance:</b> Output is in centimeters (cm).</p>
+                        </div>
+                        <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded-lg">
+                            <p class="text-sm text-gray-300"><b class="text-glr-neon">GPS:</b> Latitude and Longitude are in decimal degrees. <code class="bg-gray-800 px-1 py-0.5 rounded text-white font-mono text-xs">Time_UTC</code> is in Coordinated Universal Time.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h4 class="text-white font-bold mb-4">What's Next?</h4>
+                    <div class="space-y-4 text-sm text-gray-400 leading-relaxed">
+                        <div class="bg-gray-900 border-l-2 border-glr-neon p-4 rounded-r-lg">
+                            <b class="text-white block mb-1">Kepler.gl (Geospatial Mapping)</b>
+                            Drag and drop the generated <code class="text-glr-neon font-mono">glr_sensor_data.csv</code> into the browser for instant, code-free 3D spatial mapping based on GPS coordinates.
+                        </div>
+                        <div class="bg-gray-900 border-l-2 border-glr-neon p-4 rounded-r-lg">
+                            <b class="text-white block mb-1">Adobe Illustrator / After Effects</b>
+                            Use data-driven graphics or Extendscript to link the sensor percentages (0-100%) to visual properties like scale, opacity, or color gradients.
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-black py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="font-display text-xl text-white mb-2">Grafisch Lyceum Rotterdam</h2>
+            <p class="text-gray-500 text-xs max-w-md mx-auto mb-4">
+                Digital Design System v1.0. Strictly confidential. Use for internal development of apps and web interfaces only.
+            </p>
+            <div class="text-glr-neon text-[10px] tracking-widest uppercase">
+                End of Transmission
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

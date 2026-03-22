@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLR Sensor Configurator | Board Layout</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body class="font-body antialiased selection:bg-glr-neon selection:text-black">
+
+    <header class="relative w-full py-6 px-6 border-b border-gray-800">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4 relative">
+            <a href="index.html" class="text-left hover:opacity-80 transition-opacity">
+                <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
+                <h1 class="font-display text-2xl md:text-3xl uppercase leading-tight">
+                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+                </h1>
+            </a>
+            
+            <div class="relative">
+                <button id="menuBtn" class="text-white hover:text-glr-neon focus:outline-none transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[#0F0F0F] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
+                    <a href="index.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Configurator</a>
+                    <a href="hardware.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Hardware Guide</a>
+                    <a href="board.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-glr-neon transition-colors border-b border-gray-800">Board Layout</a>
+                    <a href="faq.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-glr-neon border-opacity-0 hover:border-glr-neon">FAQ & Data</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-4xl mx-auto px-4 py-12 flex-grow">
+        
+        <div class="mb-8 border-l-4 border-glr-neon pl-4">
+            <h2 class="font-display text-2xl uppercase mb-1">Board Layout</h2>
+            <p class="text-sm text-glr-gray">Physical layout of the Seeeduino LoRaWAN.</p>
+        </div>
+        
+        <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden relative">
+            
+            <div class="bg-gray-900 relative">
+                 <img src="/images/board-pinout.jpg" alt="Seeeduino LoRaWAN Pinout" class="w-full h-auto max-h-[500px] object-contain border-b border-gray-800 mix-blend-screen opacity-90 p-4" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23444%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+            </div>
+
+            <div class="p-8">
+                <h3 class="text-xl font-bold text-white mb-6 uppercase tracking-wide border-b border-gray-800 pb-2">Finding the Ports</h3>
+                
+                <p class="text-gray-400 mb-6 text-sm leading-relaxed">
+                    Connecting your sensors incorrectly will result in 'NaN' data outputs. 
+                    Locate the correct ports by looking closely at the <b class="text-white">small white silkscreen text printed directly onto the black PCB</b> next to each white Grove connector.
+                </p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-glr-neon text-black text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">A0</div>
+                            <div>
+                                <b class="text-white text-base">Analog Port 0</b>
+                                <p class="text-sm text-gray-400 mt-1">Look for the white text <span class="bg-gray-800 px-1 py-0.5 rounded text-glr-neon font-mono">A0</span>. This port reads varying voltages directly (e.g. Light or Temperature sensors).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-glr-neon text-black text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">A2</div>
+                            <div>
+                                <b class="text-white text-base">Analog Port 2</b>
+                                <p class="text-sm text-gray-400 mt-1">Look for the white text <span class="bg-gray-800 px-1 py-0.5 rounded text-glr-neon font-mono">A2</span>. Functions exactly the same as A0, providing a second analog channel.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="bg-glr-neon text-black text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">D2</div>
+                            <div>
+                                <b class="text-white text-base">Digital Port 2</b>
+                                <p class="text-sm text-gray-400 mt-1">Look for the white text <span class="bg-gray-800 px-1 py-0.5 rounded text-glr-neon font-mono">D2</span>. This port handles simple ON/OFF signals (like the Button) or complex digital timing protocols (like the DHT11 sensor).</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <div class="bg-blue-500 text-black text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 mt-0.5 flex-shrink-0">I2C</div>
+                            <div>
+                                <b class="text-white text-base">Data Bus (I2C)</b>
+                                <p class="text-sm text-gray-400 mt-1">Often marked as <span class="bg-gray-800 px-1 py-0.5 rounded text-blue-400 font-mono">I2C</span>. Both I2C ports map to the same internal data bus. Ideal for complex digital sensors like the 3-axis accelerometer.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-black py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="font-display text-xl text-white mb-2">Grafisch Lyceum Rotterdam</h2>
+            <p class="text-gray-500 text-xs max-w-md mx-auto mb-4">
+                Digital Design System v1.0. Strictly confidential. Use for internal development of apps and web interfaces only.
+            </p>
+            <div class="text-glr-neon text-[10px] tracking-widest uppercase">
+                End of Transmission
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>

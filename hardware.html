@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLR Sensor Configurator | Digital Identity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body class="font-body antialiased selection:bg-glr-neon selection:text-black">
+
+    <header class="relative w-full py-6 px-6 border-b border-gray-800">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4 relative">
+            <a href="index.html" class="text-left hover:opacity-80 transition-opacity">
+                <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
+                <h1 class="font-display text-2xl md:text-3xl uppercase leading-tight">
+                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+                </h1>
+            </a>
+            
+            <div class="relative">
+                <button id="menuBtn" class="text-white hover:text-glr-neon focus:outline-none transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[#0F0F0F] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
+                    <a href="index.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Configurator</a>
+                    <a href="hardware.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-glr-neon transition-colors border-b border-gray-800">Hardware Guide</a>
+                    <a href="board.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Board Layout</a>
+                    <a href="faq.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-glr-neon border-opacity-0 hover:border-glr-neon">FAQ & Data</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12 flex-grow">
+        <div class="mb-8 border-l-4 border-glr-neon pl-4">
+            <h2 class="font-display text-2xl uppercase mb-1">Hardware Guide</h2>
+            <p class="text-sm text-glr-gray">Overview of available Grove sensors and what they measure.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/light.jpg" alt="Light Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Light Sensor v1.2</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">Measures the intensity of ambient light to detect brightness.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/sound.jpg" alt="Sound Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Sound Sensor</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">Detects the sound loudness of the environment in percentages.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/temp.jpg" alt="Temperature Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Temperature Sensor (Analog)</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">Measures the ambient temperature using a thermistor.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/rotary.jpg" alt="Rotary Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Rotary Angle Sensor</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">A potentiometer that generates a value based on its rotational position.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/button.jpg" alt="Button" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Push Button</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">A digital push button that outputs PRESSED or IDLE states.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/ultrasonic.jpg" alt="Ultrasonic Distance" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Ultrasonic Distance Sensor</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">Measures the distance to an object in centimeters using sound waves.</p>
+                </div>
+            </div>
+            
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/dht11.jpg" alt="Temp & Humidity Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - Temp & Humidity Sensor v1.2</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">A digital DHT11 sensor capturing both Celsius temperature and relative humidity.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/bmi088.jpg" alt="BMI088" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - BMI088 (6-Axis)</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">An I2C aerospace grade sensor capturing 3-axis acceleration and gyroscope data.</p>
+                </div>
+            </div>
+
+            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+                <div class="h-48 bg-gray-900 border-b border-gray-800 relative">
+                    <img src="/images/sensors/mma7660.jpg" alt="MMA7660" class="w-full h-full object-cover opacity-80 mix-blend-screen" onerror="this.src='data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 fill=%22none%22 viewBox=%220 0 24 24%22 stroke=%22%23333%22><path stroke-linecap=%22round%22 stroke-linejoin=%22round%22 stroke-width=%222%22 d=%22M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z%22/></svg>'">
+                </div>
+                <div class="p-5 flex-grow flex flex-col">
+                    <h3 class="font-bold text-white mb-2">Grove - MMA7660 (3-Axis)</h3>
+                    <p class="text-sm text-gray-400 flex-grow leading-relaxed">An I2C accelerometer tracking movement and orientation in three dimensions.</p>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-black py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="font-display text-xl text-white mb-2">Grafisch Lyceum Rotterdam</h2>
+            <p class="text-gray-500 text-xs max-w-md mx-auto mb-4">
+                Digital Design System v1.0. Strictly confidential. Use for internal development of apps and web interfaces only.
+            </p>
+            <div class="text-glr-neon text-[10px] tracking-widest uppercase">
+                End of Transmission
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
