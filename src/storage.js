@@ -1,6 +1,16 @@
 import { updateUI } from './ui.js';
 
 export function loadSettings() {
+    const urlParams = new URLSearchParams(window.location.search);
+    if (urlParams.has('appeui')) document.getElementById('appEui').value = urlParams.get('appeui');
+    if (urlParams.has('deveui')) document.getElementById('devEui').value = urlParams.get('deveui');
+    if (urlParams.has('appkey')) document.getElementById('appKey').value = urlParams.get('appkey');
+
+    if (urlParams.has('appeui') || urlParams.has('deveui') || urlParams.has('appkey')) {
+        saveSettings();
+        return;
+    }
+    
     const saved = localStorage.getItem('glrSensorConfig');
     if (saved) {
         try {
