@@ -1,6 +1,6 @@
 import './style.css';
 import { loadSettings, saveAndUpdate } from './storage.js';
-import { updateUI, switchTab, setupMenu } from './ui.js';
+import { updateUI, switchTab, setupMenu, setupImageModal } from './ui.js';
 import { generateCode, copyCode } from './generator.js';
 import { downloadViaWebSerial } from './serial.js';
 
@@ -15,6 +15,7 @@ window.downloadViaWebSerial = downloadViaWebSerial;
 // Run on page load
 window.addEventListener('DOMContentLoaded', () => {
     setupMenu();
+    setupImageModal();
     if (document.getElementById('selA0')) {
         loadSettings();
         updateUI();

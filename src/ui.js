@@ -84,3 +84,71 @@ export function setupMenu() {
     }
 }
 
+export function setupImageModal() {
+    const modalTriggers = document.querySelectorAll('.modal-trigger');
+    const modal = document.getElementById('imageModal');
+    const closeBtn = document.getElementById('closeModal');
+    const modalImg = document.getElementById('modalImg');
+
+    if (!modal || !closeBtn || !modalImg) return;
+
+    modalTriggers.forEach(trigger => {
+        trigger.addEventListener('click', (e) => {
+            const img = trigger.querySelector('img');
+            if (img) {
+                modalImg.src = img.src;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.add('active');
+                }, 10);
+                document.body.style.overflow = 'hidden';
+            }
+        });
+    });
+
+    const closeModal = () => {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.classList.add('hidden');
+            modalImg.classList.remove('zoomed');
+            modalImg.style.transform = '';
+            modalImg.src = ''; // Clear src to avoid flicker on next open
+        }, 300);
+        document.body.style.overflow = '';
+    };
+
+    closeBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        closeModal();
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal || e.target.closest('.flex.items-center.justify-center')) {
+            closeModal();
+        }
+    });
+
+    modalImg.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const isZoomed = modalImg.classList.toggle('zoomed');
+        if (isZoomed) {
+            updateZoomOrigin(e);
+        } else {
+            modalImg.style.transform = '';
+        }
+    });
+
+    function updateZoomOrigin(e) {
+        if (!modalImg.classList.contains('zoomed')) return;
+        const rect = modalImg.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width) * 100;
+        const y = ((e.clientY - rect.top) / rect.height) * 100;
+        modalImg.style.transformOrigin = `${x}% ${y}%`;
+    }
+
+    modalImg.addEventListener('mousemove', (e) => {
+        if (modalImg.classList.contains('zoomed')) {
+            updateZoomOrigin(e);
+        }
+    });
+}
