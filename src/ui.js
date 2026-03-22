@@ -64,3 +64,23 @@ export function updateUI() {
         libList.innerHTML += `<li><b class="text-white">Grove 3-Axis Digital Accelerometer MMA7660</b> (or similar MMA7660 library)</li>`;
     }
 }
+
+export function setupMenu() {
+    const menuBtn = document.getElementById('menuBtn');
+    const dropdownMenu = document.getElementById('dropdownMenu');
+
+    if (menuBtn && dropdownMenu) {
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            dropdownMenu.classList.toggle('hidden');
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!dropdownMenu.contains(e.target) && !menuBtn.contains(e.target)) {
+                dropdownMenu.classList.add('hidden');
+            }
+        });
+    }
+}
+

@@ -8,15 +8,27 @@
 </head>
 <body class="font-body antialiased selection:bg-glr-neon selection:text-black">
 
-    <header class="relative w-full py-16 px-6 border-b border-gray-800">
-        <div class="max-w-6xl mx-auto text-center">
-            <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-4 text-sm">Hardware Setup V2.7</h2>
-            <h1 class="font-display text-4xl md:text-6xl uppercase leading-tight mb-4">
-                Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
-            </h1>
-            <p class="text-lg text-glr-gray max-w-2xl mx-auto leading-relaxed">
-                Select your environmental sensors and enter your network keys. The portal will automatically compile your C++ code, integrate the required math formulas, and format your output for immediate design use.
-            </p>
+    <header class="relative w-full py-6 px-6 border-b border-gray-800">
+        <div class="flex justify-between items-center max-w-7xl mx-auto px-4 relative">
+            <a href="index.html" class="text-left hover:opacity-80 transition-opacity">
+                <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
+                <h1 class="font-display text-2xl md:text-3xl uppercase leading-tight">
+                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+                </h1>
+            </a>
+            
+            <div class="relative">
+                <button id="menuBtn" class="text-white hover:text-glr-neon focus:outline-none transition-colors">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+                </button>
+                
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[#0F0F0F] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
+                    <a href="index.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-glr-neon transition-colors border-b border-gray-800">Configurator</a>
+                    <a href="hardware.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Hardware Guide</a>
+                    <a href="board.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Board Layout</a>
+                    <a href="faq.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-glr-neon border-opacity-0 hover:border-glr-neon">FAQ & Data</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -26,7 +38,10 @@
             <div class="card p-8">
                 <div class="mb-8 border-l-4 border-glr-neon pl-4">
                     <h2 class="font-display text-2xl uppercase mb-1">01. Hardware Setup</h2>
-                    <p class="text-sm text-glr-gray">Map your physical connections & network keys.</p>
+                    <p class="text-sm text-glr-gray mb-3 font-bold">Map your physical connections & network keys.</p>
+                    <p class="text-sm text-glr-gray leading-relaxed pr-4">
+                        Select your environmental sensors and enter your network keys. The portal will automatically compile your C++ code, integrate the required math formulas, and format your output for immediate design use.
+                    </p>
                 </div>
                 
                 <div class="space-y-6">
@@ -142,7 +157,7 @@
                     </button>
                 </div>
 
-                <div id="tabContentData" class="hidden flex-grow flex-col">
+                <div id="tabContentData" class="hidden flex-grow flex-col relative overflow-hidden">
                     <div class="mb-4 border-l-4 border-glr-neon pl-4">
                         <h2 class="font-display text-2xl uppercase mb-1">Data Retrieval</h2>
                         <p class="text-sm text-glr-gray">Extract your Black Box records into a design-ready CSV.</p>
@@ -204,6 +219,44 @@
                                 <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
                                     <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">5</div>
                                     <p class="text-sm text-gray-400">Copy the data from the <code>Time_UTC...</code> header down to the last row. Save it in a text editor as <code>my_data.csv</code>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="flex-grow border-t border-gray-800"></div>
+                            <span class="mx-4 text-xs text-gray-500 uppercase tracking-widest">Context</span>
+                            <div class="flex-grow border-t border-gray-800"></div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-white mb-4 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">1. Data Dictionary</h3>
+                            <div class="space-y-3">
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded">
+                                    <p class="text-sm text-gray-300"><b class="text-glr-neon">Analog Sensors (Light, Sound, Rotary):</b> Output is a percentage (0.0 to 100.0), where 0 is minimum (dark/quiet) and 100 is maximum.</p>
+                                </div>
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded">
+                                    <p class="text-sm text-gray-300"><b class="text-glr-neon">Temperature:</b> Output is in degrees Celsius.</p>
+                                </div>
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded">
+                                    <p class="text-sm text-gray-300"><b class="text-glr-neon">Ultrasonic Distance:</b> Output is in centimeters (cm).</p>
+                                </div>
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded">
+                                    <p class="text-sm text-gray-300"><b class="text-glr-neon">GPS:</b> Latitude and Longitude are in decimal degrees. <code class="bg-gray-800 px-1 py-0.5 rounded text-white font-mono text-xs">Time_UTC</code> is in Coordinated Universal Time.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-white mb-4 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">2. What's Next? (Inspiration)</h3>
+                            <div class="space-y-4 text-sm text-gray-400 leading-relaxed">
+                                <div class="bg-gray-900 border-l-2 border-glr-neon p-4">
+                                    <b class="text-white block mb-1">Kepler.gl (Geospatial Mapping)</b>
+                                    Drag and drop the generated <code class="text-glr-neon font-mono">glr_sensor_data.csv</code> into the browser for instant, code-free 3D spatial mapping based on GPS.
+                                </div>
+                                <div class="bg-gray-900 border-l-2 border-glr-neon p-4">
+                                    <b class="text-white block mb-1">Adobe Illustrator / After Effects</b>
+                                    Use data-driven graphics or scripts to link the sensor percentages to visual properties like scale, opacity, or color gradients.
                                 </div>
                             </div>
                         </div>
