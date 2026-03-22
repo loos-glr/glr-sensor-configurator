@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GLR Sensor Configurator | Digital Identity</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+</head>
+<body class="font-body antialiased selection:bg-glr-neon selection:text-black">
+
+    <header class="relative w-full py-16 px-6 border-b border-gray-800">
+        <div class="max-w-6xl mx-auto text-center">
+            <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-4 text-sm">Hardware Setup V2.7</h2>
+            <h1 class="font-display text-4xl md:text-6xl uppercase leading-tight mb-4">
+                Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+            </h1>
+            <p class="text-lg text-glr-gray max-w-2xl mx-auto leading-relaxed">
+                Select your environmental sensors and enter your network keys. The portal will automatically compile your C++ code, integrate the required math formulas, and format your output for immediate design use.
+            </p>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-12">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            
+            <div class="card p-8">
+                <div class="mb-8 border-l-4 border-glr-neon pl-4">
+                    <h2 class="font-display text-2xl uppercase mb-1">01. Hardware Setup</h2>
+                    <p class="text-sm text-glr-gray">Map your physical connections & network keys.</p>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-[#0F0F0F] p-4 border border-gray-800 rounded">
+                        <label class="block text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">White Port: A0 (Analog)</label>
+                        <select id="selA0" onchange="saveAndUpdate()" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-3 rounded focus:border-glr-neon outline-none transition-colors cursor-pointer">
+                            <option value="NONE">-- No sensor connected --</option>
+                            <option value="LIGHT">Grove - Light Sensor v1.2 (0-100%)</option>
+                            <option value="SOUND">Grove - Sound Sensor (0-100%)</option>
+                            <option value="TEMP">Grove - Temperature Sensor (Analog) (Celsius)</option>
+                            <option value="ROTARY">Grove - Rotary Angle Sensor (0-100%)</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] p-4 border border-gray-800 rounded">
+                        <label class="block text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">White Port: A2 (Analog)</label>
+                        <select id="selA2" onchange="saveAndUpdate()" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-3 rounded focus:border-glr-neon outline-none transition-colors cursor-pointer">
+                            <option value="NONE">-- No sensor connected --</option>
+                            <option value="LIGHT">Grove - Light Sensor v1.2 (0-100%)</option>
+                            <option value="SOUND">Grove - Sound Sensor (0-100%)</option>
+                            <option value="TEMP">Grove - Temperature Sensor (Analog) (Celsius)</option>
+                            <option value="ROTARY">Grove - Rotary Angle Sensor (0-100%)</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] p-4 border border-gray-800 rounded">
+                        <label class="block text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">White Port: D2 (Digital)</label>
+                        <select id="selD2" onchange="saveAndUpdate()" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-3 rounded focus:border-glr-neon outline-none transition-colors cursor-pointer">
+                            <option value="NONE">-- No sensor connected --</option>
+                            <option value="BUTTON">Grove - Button (PRESSED / IDLE)</option>
+                            <option value="ULTRASONIC">Grove - Ultrasonic Distance v2.0 (Centimeters)</option>
+                            <option value="DHT">Grove - Temp & Humidity v1.2 (Celsius & %)</option>
+                        </select>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] p-4 border border-gray-800 rounded">
+                        <label class="block text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">White Ports: I2C (Data Bus)</label>
+                        <p class="text-xs text-gray-500 mb-3">Both physical I2C ports act as the same data bus.</p>
+                        
+                        <div class="flex items-center space-x-3 mb-3">
+                            <input type="checkbox" id="chkBMI088" onchange="saveAndUpdate()" class="w-5 h-5 accent-glr-neon bg-[#1A1A1A] border-gray-700 rounded cursor-pointer">
+                            <label for="chkBMI088" class="text-sm cursor-pointer hover:text-white transition-colors">Grove - BMI088 (6-Axis Accelerometer)</label>
+                        </div>
+                        <div class="flex items-center space-x-3">
+                            <input type="checkbox" id="chkMMA7660" onchange="saveAndUpdate()" class="w-5 h-5 accent-glr-neon bg-[#1A1A1A] border-gray-700 rounded cursor-pointer">
+                            <label for="chkMMA7660" class="text-sm cursor-pointer hover:text-white transition-colors">Grove - MMA7660 (3-Axis Accelerometer v1.3)</label>
+                        </div>
+                    </div>
+
+                    <div class="bg-[#0F0F0F] p-4 border border-gray-800 rounded">
+                        <label class="block text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">LoRaWAN Network Keys</label>
+                        <p class="text-xs text-gray-500 mb-4">Copy these from The Things Network console.</p>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <span class="text-xs text-gray-400 block mb-1">App EUI (or Join EUI)</span>
+                                <input type="text" id="appEui" oninput="saveAndUpdate()" placeholder="e.g. 0000000000000000" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-2 rounded focus:border-glr-neon outline-none font-mono text-sm transition-colors">
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 block mb-1">Dev EUI</span>
+                                <input type="text" id="devEui" oninput="saveAndUpdate()" placeholder="e.g. 70B3D57ED0001234" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-2 rounded focus:border-glr-neon outline-none font-mono text-sm transition-colors">
+                            </div>
+                            <div>
+                                <span class="text-xs text-gray-400 block mb-1">App Key</span>
+                                <input type="text" id="appKey" oninput="saveAndUpdate()" placeholder="e.g. A1B2C3D4E5F67890A1B2C3D4E5F67890" class="w-full bg-[#1A1A1A] border border-gray-700 text-white p-2 rounded focus:border-glr-neon outline-none font-mono text-sm transition-colors">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-gray-900 border-l-2 border-glr-neon p-4">
+                        <p class="text-xs text-glr-neon uppercase tracking-wider mb-2 font-bold">Physical Instructions</p>
+                        <ul id="tapeList" class="text-sm text-gray-300 space-y-2 list-inside list-disc">
+                            </ul>
+                    </div>
+
+                    <div class="bg-gray-900 border-l-2 border-[#3a7bd5] p-4 mt-4">
+                        <p class="text-xs text-[#3a7bd5] uppercase tracking-wider mb-2 font-bold">Software Dependencies (Arduino IDE)</p>
+                        <p class="text-xs text-gray-400 mb-3">Go to <b>Sketch &gt; Include Library &gt; Manage Libraries...</b> and install these exact packages:</p>
+                        <ul id="libraryList" class="text-sm text-gray-300 space-y-2 list-inside list-disc">
+                            </ul>
+                    </div>
+
+                    <button onclick="generateCode()" class="w-full bg-glr-neon text-black font-display font-bold text-lg py-4 px-8 uppercase tracking-wider hover:scale-[1.02] transition-transform">
+                        Compile Code &rarr;
+                    </button>
+                </div>
+            </div>
+
+            <div class="card p-8 flex flex-col h-[1350px]">
+                
+                <div class="flex border-b border-gray-800 mb-6">
+                    <button id="tabBtnCode" onclick="switchTab('code')" class="pb-3 px-6 text-glr-neon border-b-2 border-glr-neon font-bold uppercase tracking-wider text-sm transition-colors focus:outline-none">
+                        1. Compile & Upload
+                    </button>
+                    <button id="tabBtnData" onclick="switchTab('data')" class="pb-3 px-6 text-glr-gray border-b-2 border-transparent hover:text-white font-bold uppercase tracking-wider text-sm transition-colors focus:outline-none">
+                        2. Extract Data
+                    </button>
+                </div>
+
+                <div id="tabContentCode" class="flex-grow flex flex-col relative overflow-hidden">
+                    <div class="mb-4 border-l-4 border-glr-neon pl-4">
+                        <h2 class="font-display text-2xl uppercase mb-1">The Portal Interface</h2>
+                        <p class="text-sm text-glr-gray">Copy this payload to your Arduino IDE to upload it to your board.</p>
+                    </div>
+                    
+                    <div class="flex-grow bg-[#0F0F0F] border border-gray-800 rounded relative overflow-hidden flex flex-col">
+                        <pre id="codeOutput" class="p-6 text-sm text-gray-300 font-mono overflow-auto flex-grow h-full leading-relaxed">// Awaiting sensor configuration...
+// Select your inputs on the left and click 'Compile Code'.</pre>
+                    </div>
+                    
+                    <button id="copyBtn" onclick="copyCode()" class="hidden mt-4 w-full bg-transparent border-2 border-glr-neon text-glr-neon font-bold text-sm py-3 px-8 uppercase tracking-wider hover:bg-glr-neon hover:text-black transition-colors">
+                        Copy to Clipboard
+                    </button>
+                </div>
+
+                <div id="tabContentData" class="hidden flex-grow flex-col">
+                    <div class="mb-4 border-l-4 border-glr-neon pl-4">
+                        <h2 class="font-display text-2xl uppercase mb-1">Data Retrieval</h2>
+                        <p class="text-sm text-glr-gray">Extract your Black Box records into a design-ready CSV.</p>
+                    </div>
+
+                    <div class="space-y-6 overflow-y-auto pr-2 pb-8">
+                        
+                        <div class="bg-red-900/20 border border-red-500/50 p-5 rounded-lg">
+                            <div class="flex items-center mb-2">
+                                <span class="text-red-500 text-xl mr-3">⚠️</span>
+                                <h3 class="font-bold text-red-400 uppercase tracking-wide">Critical Warning</h3>
+                            </div>
+                            <p class="text-sm text-gray-300">
+                                Do <b class="text-white">NOT</b> disconnect the battery from your Seeeduino yet! If the board loses power before you extract the data, your offline memory will be erased. Only disconnect the battery after the CSV is downloaded.
+                            </p>
+                        </div>
+
+                        <div class="bg-gray-900 border border-glr-neon p-6 rounded-lg text-center">
+                            <h3 class="font-display text-xl text-white mb-2">Direct Browser Download</h3>
+                            <p class="text-sm text-gray-400 mb-6 max-w-md mx-auto">Connect your board via USB. This feature requires Google Chrome, Microsoft Edge, or Opera.</p>
+                            
+                            <button onclick="downloadViaWebSerial()" class="bg-glr-neon text-black font-bold uppercase tracking-wider py-4 px-8 rounded hover:scale-105 transition-transform flex items-center justify-center mx-auto w-full max-w-sm">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+                                Connect & Download CSV
+                            </button>
+                            <p id="serialStatus" class="mt-4 text-sm font-mono text-glr-neon h-4"></p>
+                        </div>
+
+                        <div class="flex items-center">
+                            <div class="flex-grow border-t border-gray-800"></div>
+                            <span class="mx-4 text-xs text-gray-500 uppercase tracking-widest">OR</span>
+                            <div class="flex-grow border-t border-gray-800"></div>
+                        </div>
+
+                        <div>
+                            <h3 class="font-bold text-white mb-4 uppercase tracking-wider text-sm border-b border-gray-800 pb-2">Fallback: Manual Arduino IDE Extraction</h3>
+                            
+                            <div class="space-y-3">
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
+                                    <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">1</div>
+                                    <p class="text-sm text-gray-400">Connect the Seeeduino via USB (while the battery is still plugged in).</p>
+                                </div>
+
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
+                                    <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">2</div>
+                                    <p class="text-sm text-gray-400">Open the Arduino IDE. Go to <b>Tools &gt; Serial Monitor</b>.</p>
+                                </div>
+
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
+                                    <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">3</div>
+                                    <p class="text-sm text-gray-400">Set the baud rate in the bottom right corner to <b class="text-white">115200</b>.</p>
+                                </div>
+
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
+                                    <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">4</div>
+                                    <p class="text-sm text-gray-400">Type <b class="bg-gray-800 px-1 py-0.5 rounded text-white font-mono">DUMP</b> in the message input bar and press Enter.</p>
+                                </div>
+
+                                <div class="bg-[#0F0F0F] border border-gray-800 p-4 rounded flex items-start">
+                                    <div class="bg-gray-800 text-glr-gray text-xs font-bold w-6 h-6 rounded-full flex items-center justify-center mr-3 flex-shrink-0 mt-0.5">5</div>
+                                    <p class="text-sm text-gray-400">Copy the data from the <code>Time_UTC...</code> header down to the last row. Save it in a text editor as <code>my_data.csv</code>.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="border-t border-gray-800 bg-black py-8 mt-12">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <h2 class="font-display text-xl text-white mb-2">Grafisch Lyceum Rotterdam</h2>
+            <p class="text-gray-500 text-xs max-w-md mx-auto mb-4">
+                Digital Design System v1.0. Strictly confidential. Use for internal development of apps and web interfaces only.
+            </p>
+            <div class="text-glr-neon text-[10px] tracking-widest uppercase">
+                End of Transmission
+            </div>
+        </div>
+    </footer>
+
+    <script type="module" src="/src/main.js"></script>
+</body>
+</html>
