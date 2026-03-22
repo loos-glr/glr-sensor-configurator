@@ -6,9 +6,8 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
   ],
-  publicDir: 'static', // Define a new directory for static assets to avoid conflicting with outDir
   build: {
-    outDir: 'public',
+    outDir: 'dist',
     emptyOutDir: true // Maakt de map leeg voor elke build, voorkomt conflicten
   },
   rollupOptions: {
