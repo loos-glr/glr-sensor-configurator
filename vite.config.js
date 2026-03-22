@@ -8,9 +8,8 @@ export default defineConfig({
   ],
   build: {
     outDir: 'dist',
-    emptyOutDir: true // Maakt de map leeg voor elke build, voorkomt conflicten
-  },
-  rollupOptions: {
+    emptyOutDir: true, // Maakt de map leeg voor elke build, voorkomt conflicten
+    rollupOptions: {
       input: {
         main: resolve(__dirname, 'index.html'),
         hardware: resolve(__dirname, 'hardware.html'),
@@ -18,4 +17,5 @@ export default defineConfig({
         faq: resolve(__dirname, 'faq.html')
       }
     }
+  }
 })
