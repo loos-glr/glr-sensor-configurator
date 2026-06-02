@@ -1,3 +1,7 @@
+import { createApp } from 'vue';
+import App from './App.vue';
+
+
 import './style.css';
 import { loadSettings, saveAndUpdate } from './storage.js';
 import { updateUI, switchTab, setupMenu, setupImageModal, getFormValues, displayValidationErrors, clearAlerts, displayCode, copyCode } from './ui.js';
@@ -34,3 +38,8 @@ window.addEventListener('DOMContentLoaded', () => {
         updateUI();
     }
 });
+    
+    const vueContainer = document.getElementById('vue-app');
+    if (vueContainer) {
+        createApp(App).mount('#vue-app');
+    }
