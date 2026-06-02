@@ -1,0 +1,13 @@
+# .ruler/ruler.toml
+
+[agents.cline]
+enabled = true
+
+[agents.copilot]
+enabled = true
+
+# [agents.cursor]
+# enabled = false
+
+# [agents.claude]
+# enabled = false
