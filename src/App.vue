@@ -1,10 +1,11 @@
 <template>
   <div id="vue-app-root">
-    <!-- Vue App Mount Point -->
+    <BasicConfigurator />
   </div>
 </template>
 
 <script setup>
+import BasicConfigurator from './components/BasicConfigurator.vue';
 </script>
 
 <style>

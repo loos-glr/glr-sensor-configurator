@@ -8,6 +8,12 @@ export default defineConfig({
     vue(),
     tailwindcss(),
   ],
+  resolve: {
+    alias: {
+      '@domain': resolve(__dirname, './src/domain'),
+      '@ui': resolve(__dirname, './src/ui')
+    }
+  },
   build: {
     outDir: 'dist',
     emptyOutDir: true, // Maakt de map leeg voor elke build, voorkomt conflicten
