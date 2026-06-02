@@ -63,4 +63,19 @@ describe('Firmware Compiler', () => {
         expect(code).toContain('snprintf(buffer, sizeof(buffer), "%d,%d,%d,%d", val_a0, val_a2, val_d2_t, val_d2_h);');
     });
 
+    it('should inject SensorRecord struct dynamically', () => {
+        const config = {
+            ...baseConfig,
+            pins: { a0: "TEMP" as const, a2: "NONE" as const, d2: "DHT" as const },
+            i2c: { bmi088: false, mma7660: false }
+        };
+        const code = generateFirmware(config);
+        
+        expect(code).toContain('const int MAX_RECORDS = 300;');
+        expect(code).toContain('struct SensorRecord {');
+        expect(code).toContain('float a0_val;');
+        expect(code).toContain('float d2_temp;');
+        expect(code).toContain('float d2_hum;');
+    });
+
 });

@@ -10,6 +10,10 @@ export function generateFirmware(config: ConfigurationProfile): string {
     let formatSpecifiers: string[] = [];
     let varDeclarations: string[] = [];
 
+    // Struct Generation
+    globals.push('const int MAX_RECORDS = 300;');
+    let structFields: string[] = [];
+    
     // Core LoRaWAN Includes & Setup
     includes.push('#include <LoRaWan.h>');
     
@@ -47,6 +51,9 @@ export function generateFirmware(config: ConfigurationProfile): string {
         if (p.conf === 'NONE') continue;
 
         if (p.conf === 'DHT') {
+            structFields.push(`    float ${p.id}_temp;`);
+            structFields.push(`    float ${p.id}_hum;`);
+            
             includes.push('#include <DHT.h>');
             globals.push(`#define DHTPIN ${p.pinVal}`);
             globals.push('#define DHTTYPE DHT11');
@@ -60,6 +67,8 @@ export function generateFirmware(config: ConfigurationProfile): string {
             formatArgs.push(`val_${p.id}_t`);
             formatArgs.push(`val_${p.id}_h`);
         } else if (p.conf === 'ULTRASONIC') {
+            structFields.push(`    float ${p.id}_val;`);
+            
             setupBlocks.push(`    pinMode(${p.pinVal}, OUTPUT);`);
             varDeclarations.push(`    pinMode(${p.pinVal}, OUTPUT);`);
             varDeclarations.push(`    digitalWrite(${p.pinVal}, LOW);`);
@@ -73,6 +82,8 @@ export function generateFirmware(config: ConfigurationProfile): string {
             formatSpecifiers.push('%ld');
             formatArgs.push(`val_${p.id}`);
         } else if (p.conf === 'TEMP') {
+            structFields.push(`    float ${p.id}_val;`);
+            
             includes.push('#include <math.h>');
             varDeclarations.push(`    int raw_${p.id} = analogRead(${p.pinVal});`);
             varDeclarations.push(`    float r = 10000.0 * (1023.0 / raw_${p.id} - 1.0);`);
@@ -82,6 +93,8 @@ export function generateFirmware(config: ConfigurationProfile): string {
             formatArgs.push(`val_${p.id}`);
         } else {
             // Default analog/digital read (LIGHT, SOUND, BUTTON, ROTARY)
+            structFields.push(`    float ${p.id}_val;`);
+            
             const readFunc = p.type === 'analog' ? 'analogRead' : 'digitalRead';
             if (p.type === 'digital') {
                 setupBlocks.push(`    pinMode(${p.pinVal}, INPUT);`);
@@ -91,6 +104,12 @@ export function generateFirmware(config: ConfigurationProfile): string {
             formatSpecifiers.push('%d');
             formatArgs.push(`val_${p.id}`);
         }
+    }
+    
+    if (structFields.length > 0) {
+        globals.push('struct SensorRecord {');
+        globals.push(...structFields);
+        globals.push('};');
     }
     
     if (formatSpecifiers.length > 0) {
