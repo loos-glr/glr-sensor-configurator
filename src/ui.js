@@ -152,3 +152,61 @@ export function setupImageModal() {
         }
     });
 }
+
+export function getFormValues() {
+    return {
+        appEui: document.getElementById('appEui').value.trim(),
+        devEui: document.getElementById('devEui').value.trim(),
+        appKey: document.getElementById('appKey').value.trim(),
+        pins: {
+            a0: document.getElementById('selA0').value,
+            a2: document.getElementById('selA2').value,
+            d2: document.getElementById('selD2').value,
+        },
+        i2c: {
+            bmi088: document.getElementById('chkBMI088').checked,
+            mma7660: document.getElementById('chkMMA7660').checked,
+        }
+    };
+}
+
+export function displayValidationErrors(errors) {
+    const alertsContainer = document.getElementById('alertsContainer');
+    if (alertsContainer) {
+        alertsContainer.innerHTML = '';
+        errors.forEach(err => {
+            const alert = document.createElement('div');
+            alert.className = 'bg-red-500 text-white px-4 py-2 rounded mb-2';
+            alert.innerHTML = `${err.path.join('.')}: ${err.message}`;
+            alertsContainer.appendChild(alert);
+        });
+    }
+}
+
+export function clearAlerts() {
+    const alertsContainer = document.getElementById('alertsContainer');
+    if (alertsContainer) {
+        alertsContainer.innerHTML = '';
+    }
+}
+
+export function displayCode(code) {
+    document.getElementById('codeOutput').textContent = code;
+    document.getElementById('copyBtn').style.display = 'block';
+}
+
+export function copyCode() {
+    const code = document.getElementById('codeOutput').textContent;
+    navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('copyBtn');
+        btn.innerHTML = "Copied to Clipboard! &check;";
+        btn.classList.remove('bg-transparent', 'text-glr-neon');
+        btn.classList.add('bg-glr-neon', 'text-black');
+        setTimeout(() => {
+            btn.innerHTML = "Copy to Clipboard";
+            btn.classList.add('bg-transparent', 'text-glr-neon');
+            btn.classList.remove('bg-glr-neon', 'text-black');
+        }, 2000);
+    });
+}
+

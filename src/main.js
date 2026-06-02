@@ -1,16 +1,29 @@
 import './style.css';
 import { loadSettings, saveAndUpdate } from './storage.js';
-import { updateUI, switchTab, setupMenu, setupImageModal } from './ui.js';
-import { generateCode, copyCode } from './generator.js';
+import { updateUI, switchTab, setupMenu, setupImageModal, getFormValues, displayValidationErrors, clearAlerts, displayCode, copyCode } from './ui.js';
+import { generateFirmware } from './generator.js';
+import { ConfigurationProfileSchema } from './domain/index.ts';
 import { downloadViaWebSerial } from './serial.js';
 
-// Bind functions to the window object so they can be called from inline HTML attributes
-// This is done to maintain compatibility with the current HTML without a full refactor to addEventListener
 window.saveAndUpdate = saveAndUpdate;
-window.generateCode = generateCode;
 window.switchTab = switchTab;
 window.copyCode = copyCode;
 window.downloadViaWebSerial = downloadViaWebSerial;
+
+window.handleGenerateSubmit = () => {
+    clearAlerts();
+    const data = getFormValues();
+    const parsed = ConfigurationProfileSchema.safeParse(data);
+    
+    if (!parsed.success) {
+        displayValidationErrors(parsed.error.issues);
+        return;
+    }
+    
+    const code = generateFirmware(parsed.data);
+    displayCode(code);
+    switchTab('code');
+};
 
 // Run on page load
 window.addEventListener('DOMContentLoaded', () => {
