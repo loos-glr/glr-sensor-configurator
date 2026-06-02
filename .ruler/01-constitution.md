@@ -9,13 +9,13 @@ Any PR or commit that deviates from these exact terms will be rejected:
 - Schema: The Zod validation ruleset.
 
 ## Technology Stack & Agent Skills
-- Language: Strict TypeScript (ESNext). No `any` types allowed.
-- Validation: `zod`. All domain inputs must be parsed through a Zod schema before processing.
-- Testing: `vitest`. Tests must execute in < 200ms.
-- UI Framework: Vite + Tailwind v4 + Vanilla TS (DOM manipulation must remain isolated).
-- Hardware Payloads: Do not guess C++ payloads; reference the strict hardware formatting rules.
+- **Language**: Strict TypeScript (ESNext). No `any` types allowed.
+- **Validation**: `zod` for all domain inputs.
+- **Testing**: `vitest`.
+- **UI Framework**: Vue 3 (Composition API using `<script setup lang="ts">`) + Vite + Tailwind v4. 
+- **Hardware Payloads**: Do not guess C++ payloads; reference the strict hardware formatting rules.
 
 ## Architectural Mandate: Clean Architecture
 This repository is strictly divided into two layers:
-1. Domain Layer (`/src/domain`): Pure TypeScript/Zod. Contains the Configuration Profile schemas and the Payload Generation engine. ZERO DOM references allowed.
-2. Infrastructure Layer (`/src/ui`): Vite/DOM integration. It collects user input, passes it to the Domain layer, and displays the result.
+1. **Domain Layer (`/src/domain`)**: Pure TypeScript/Zod. Contains the Configuration Profile schemas and Payload Generation. ZERO Vue or DOM references allowed.
+2. **Infrastructure Layer (`/src/ui`)**: Vue 3 Components. It collects user input via `v-model`, passes it to the Domain layer, and displays the result. The UI layer contains NO business logic or C++ string generation.
