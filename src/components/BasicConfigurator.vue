@@ -131,11 +131,16 @@
         <p class="mt-2">{{ error }}</p>
       </div>
       
-      <div v-if="cppOutput" class="border-2 border-white p-8 relative">
-        <h2 class="absolute -top-4 left-4 bg-[#0F0F0F] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
+      <div v-if="cppOutput" class="border-2 border-white p-8 relative bg-black">
+        <h2 class="absolute -top-4 left-4 bg-black px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
           Payload Output
         </h2>
-        <pre data-test="cpp-output" class="font-['JetBrains_Mono'] text-sm text-gray-300 mt-4 overflow-x-auto p-4 bg-gray-900 border border-gray-800">{{ cppOutput }}</pre>
+        <div class="flex justify-end mb-4">
+          <button @click="copyToClipboard" class="border-2 border-white bg-white text-black font-['Anton'] text-sm uppercase tracking-wider py-2 px-6 hover:bg-[#00D745] hover:border-[#00D745] transition-colors focus:outline-none focus:ring-2 focus:ring-[#00D745] focus:ring-offset-2 focus:ring-offset-black">
+            {{ copied ? 'Copied!' : 'Copy' }}
+          </button>
+        </div>
+        <pre data-test="cpp-output" class="font-['JetBrains_Mono'] text-sm text-[#00D745] overflow-x-auto p-6 bg-black border-2 border-gray-800">{{ cppOutput }}</pre>
       </div>
     </div>
   </div>
@@ -160,6 +165,19 @@ const form = reactive({
     mma7660: false
   }
 });
+
+const copied = ref(false);
+
+const copyToClipboard = async () => {
+  if (!cppOutput.value) return;
+  try {
+    await navigator.clipboard.writeText(cppOutput.value);
+    copied.value = true;
+    setTimeout(() => { copied.value = false; }, 2000);
+  } catch (err) {
+    console.error('Failed to copy', err);
+  }
+};
 
 const cppOutput = ref('');
 const error = ref('');

@@ -1,5 +1,5 @@
 <template>
-  <div class="vue-app-root min-h-screen bg-[#0F0F0F] text-white">
+  <div id="vue-app-root" class="vue-app-root min-h-screen bg-[#0F0F0F] text-white">
     <!-- 1. 12-column desktop / 4-column mobile fluid grid structural logic -->
     <!-- 3. Inject the wide margins (64px desktop / 16px mobile) (via px-4 and md:px-16) -->
     <main class="grid grid-cols-4 md:grid-cols-12 gap-4 md:gap-8 px-4 md:px-16 py-8 md:py-16 mx-auto">
