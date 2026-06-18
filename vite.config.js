@@ -10,8 +10,7 @@ export default defineConfig({
   ],
   resolve: {
     alias: {
-      '@domain': resolve(__dirname, './src/domain'),
-      '@ui': resolve(__dirname, './src/ui')
+      '@domain': resolve(__dirname, './src/domain')
     }
   },
   build: {
