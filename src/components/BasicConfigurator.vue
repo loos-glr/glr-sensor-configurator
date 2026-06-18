@@ -1,5 +1,5 @@
 <template>
-  <div class="basic-configurator p-8 max-w-4xl mx-auto">
+  <div class="basic-configurator p-8 ">
     <!-- Header -->
     <header class="mb-16 border-b-4 border-white pb-8">
       <h1 class="font-['Anton'] text-6xl uppercase tracking-wider text-white">
