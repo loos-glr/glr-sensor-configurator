@@ -1,51 +1,137 @@
 @import "tailwindcss";
 
 @theme {
-  --color-glr-neon: #00D745;
-  --color-glr-dark: #0F0F0F;
-  --color-glr-surface: #1A1A1A;
-  --color-glr-text: #FFFFFF;
-  --color-glr-gray: #B3B3B3;
-  --color-glr-error: #FF3B30;
+  --color-stark-white: #FFFFFF;
+  --color-primary-fixed-dim: #89dc00;
+  --color-on-primary-container: #3a6200;
+  --color-inverse-primary: #3f6900;
+  --color-outline: #8a947b;
+  --color-error: #ffb4ab;
+  --color-on-primary-fixed-variant: #2e4f00;
+  --color-on-secondary-container: #b1be8b;
+  --color-surface: #131313;
+  --color-on-secondary-fixed: #161f00;
+  --color-inverse-surface: #e2e2e2;
+  --color-on-primary-fixed: #102000;
+  --color-tertiary: #fde3ff;
+  --color-surface-container-high: #2a2a2a;
+  --color-secondary-fixed-dim: #bfcc98;
+  --color-tertiary-fixed: #fad7ff;
+  --color-pure-black: #000000;
+  --color-tertiary-container: #f2bcff;
+  --color-surface-container-lowest: #0e0e0e;
+  --color-on-error-container: #ffdad6;
+  --color-error-container: #93000a;
+  --color-surface-bright: #393939;
+  --color-primary-container: #8fe507;
+  --color-on-secondary: #2a340e;
+  --color-deep-forest: #2C3610;
+  --color-secondary-container: #424d25;
+  --color-on-tertiary-fixed-variant: #60366e;
+  --color-on-tertiary-fixed: #30063f;
+  --color-acid-green: #8FE507;
+  --color-surface-container-low: #1b1b1b;
+  --color-secondary-fixed: #dbe8b2;
+  --color-surface-container-highest: #353535;
+  --color-surface-variant: #353535;
+  --color-on-secondary-fixed-variant: #404b23;
+  --color-background: #131313;
+  --color-on-surface-variant: #c0caaf;
+  --color-surface-container: #1f1f1f;
+  --color-on-primary: #1e3700;
+  --color-on-error: #690005;
+  --color-inverse-on-surface: #303030;
+  --color-on-tertiary: #481e56;
+  --color-surface-tint: #89dc00;
+  --color-secondary: #bfcc98;
+  --color-primary-fixed: #a2fa2c;
+  --color-tertiary-fixed-dim: #e9b4f6;
+  --color-primary: #b8ff64;
+  --color-on-tertiary-container: #734781;
+  --color-surface-dim: #131313;
+  --color-on-background: #e2e2e2;
+  --color-outline-variant: #414a35;
+  --color-on-surface: #e2e2e2;
 
-  --font-display: "Montserrat", sans-serif;
-  --font-body: "Inter", sans-serif;
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+
+  --spacing-gutter: 24px;
+  --spacing-base: 8px;
+  --spacing-margin-mobile: 16px;
+  --spacing-margin-desktop: 64px;
+  --spacing-section-gap: 128px;
+
+  --font-headline-lg-mobile: "Anton", sans-serif;
+  --font-label-lg: "JetBrains Mono", monospace;
+  --font-body-md: "Hanken Grotesk", sans-serif;
+  --font-headline-md: "Anton", sans-serif;
+  --font-headline-lg: "Anton", sans-serif;
+  --font-label-sm: "JetBrains Mono", monospace;
+  --font-headline-xl: "Anton", sans-serif;
+  --font-body-lg: "Hanken Grotesk", sans-serif;
+  --font-headline: "Anton", sans-serif;
+  --font-display: "Anton", sans-serif;
+  --font-body: "Hanken Grotesk", sans-serif;
+  --font-label: "JetBrains Mono", monospace;
+  
+  --text-headline-lg-mobile: 40px;
+  --text-headline-lg-mobile--line-height: 44px;
+  --text-headline-lg-mobile--font-weight: 400;
+
+  --text-label-lg: 14px;
+  --text-label-lg--line-height: 20px;
+  --text-label-lg--letter-spacing: 0.05em;
+  --text-label-lg--font-weight: 600;
+
+  --text-body-md: 16px;
+  --text-body-md--line-height: 24px;
+  --text-body-md--font-weight: 400;
+
+  --text-headline-md: 32px;
+  --text-headline-md--line-height: 36px;
+  --text-headline-md--font-weight: 400;
+
+  --text-headline-lg: 64px;
+  --text-headline-lg--line-height: 64px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 400;
+
+  --text-label-sm: 12px;
+  --text-label-sm--line-height: 16px;
+  --text-label-sm--letter-spacing: 0.02em;
+  --text-label-sm--font-weight: 500;
+
+  --text-headline-xl: 96px;
+  --text-headline-xl--line-height: 90px;
+  --text-headline-xl--letter-spacing: -0.02em;
+  --text-headline-xl--font-weight: 400;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 28px;
+  --text-body-lg--font-weight: 400;
 }
 
 @layer base {
   body {
-    background-color: var(--color-glr-dark);
-    color: var(--color-glr-text);
-  }
-}
-
-@layer components {
-  .card {
-    background-color: var(--color-glr-surface);
-    border-radius: 0.5rem;
-    border: 1px solid transparent;
-    transition: all 0.2s ease-in-out;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
-  }
-  
-  .card:hover {
-    border-color: var(--color-glr-neon);
-    transform: translateY(-0.125rem);
+    background-color: var(--color-pure-black);
+    color: var(--color-stark-white);
   }
 }
 
 /* Custom styles that don't fit perfectly in Tailwind layers or are vendor-specific */
 select {
   appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2300D745' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%238FE507' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right 1rem center;
   background-size: 1em;
 }
 
 ::-webkit-scrollbar { width: 8px; height: 8px; }
-::-webkit-scrollbar-track { background: #0F0F0F; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+::-webkit-scrollbar-track { background: var(--color-pure-black); }
+::-webkit-scrollbar-thumb { background: var(--color-deep-forest); border-radius: 4px; }
 #imageModal.active {
   display: flex;
   opacity: 1;

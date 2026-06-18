@@ -14,7 +14,7 @@
       
       <!-- PINS SECTION -->
       <section class="border-2 border-gray-800 p-8 relative">
-        <h2 class="absolute -top-4 left-4 bg-[#0F0F0F] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
+        <h2 class="absolute -top-4 left-4 bg-[var(--color-pure-black)] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
           Pin Configurations
         </h2>
         
@@ -24,11 +24,11 @@
             <label class="font-['JetBrains_Mono'] text-xs font-bold text-gray-400 uppercase tracking-widest">A0 Switch</label>
             <select v-model="form.pins.a0" data-test="sel-a0" 
               class="w-full bg-transparent border-2 border-gray-600 rounded-none p-3 text-white font-['JetBrains_Mono'] focus:outline-none focus:border-white focus:ring-0 appearance-none transition-colors">
-              <option value="NONE" class="bg-[#0F0F0F]">NONE</option>
-              <option value="TEMP" class="bg-[#0F0F0F]">TEMP</option>
-              <option value="LIGHT" class="bg-[#0F0F0F]">LIGHT</option>
-              <option value="SOUND" class="bg-[#0F0F0F]">SOUND</option>
-              <option value="ROTARY" class="bg-[#0F0F0F]">ROTARY</option>
+              <option value="NONE" class="bg-[var(--color-pure-black)]">NONE</option>
+              <option value="TEMP" class="bg-[var(--color-pure-black)]">TEMP</option>
+              <option value="LIGHT" class="bg-[var(--color-pure-black)]">LIGHT</option>
+              <option value="SOUND" class="bg-[var(--color-pure-black)]">SOUND</option>
+              <option value="ROTARY" class="bg-[var(--color-pure-black)]">ROTARY</option>
             </select>
           </div>
           
@@ -37,11 +37,11 @@
             <label class="font-['JetBrains_Mono'] text-xs font-bold text-gray-400 uppercase tracking-widest">A2 Switch</label>
             <select v-model="form.pins.a2" data-test="sel-a2"
               class="w-full bg-transparent border-2 border-gray-600 rounded-none p-3 text-white font-['JetBrains_Mono'] focus:outline-none focus:border-white focus:ring-0 appearance-none transition-colors">
-              <option value="NONE" class="bg-[#0F0F0F]">NONE</option>
-              <option value="TEMP" class="bg-[#0F0F0F]">TEMP</option>
-              <option value="LIGHT" class="bg-[#0F0F0F]">LIGHT</option>
-              <option value="SOUND" class="bg-[#0F0F0F]">SOUND</option>
-              <option value="ROTARY" class="bg-[#0F0F0F]">ROTARY</option>
+              <option value="NONE" class="bg-[var(--color-pure-black)]">NONE</option>
+              <option value="TEMP" class="bg-[var(--color-pure-black)]">TEMP</option>
+              <option value="LIGHT" class="bg-[var(--color-pure-black)]">LIGHT</option>
+              <option value="SOUND" class="bg-[var(--color-pure-black)]">SOUND</option>
+              <option value="ROTARY" class="bg-[var(--color-pure-black)]">ROTARY</option>
             </select>
           </div>
           
@@ -50,10 +50,10 @@
             <label class="font-['JetBrains_Mono'] text-xs font-bold text-gray-400 uppercase tracking-widest">D2 Switch</label>
             <select v-model="form.pins.d2" data-test="sel-d2"
               class="w-full bg-transparent border-2 border-gray-600 rounded-none p-3 text-white font-['JetBrains_Mono'] focus:outline-none focus:border-white focus:ring-0 appearance-none transition-colors">
-              <option value="NONE" class="bg-[#0F0F0F]">NONE</option>
-              <option value="BUTTON" class="bg-[#0F0F0F]">BUTTON</option>
-              <option value="ULTRASONIC" class="bg-[#0F0F0F]">ULTRASONIC</option>
-              <option value="DHT" class="bg-[#0F0F0F]">DHT</option>
+              <option value="NONE" class="bg-[var(--color-pure-black)]">NONE</option>
+              <option value="BUTTON" class="bg-[var(--color-pure-black)]">BUTTON</option>
+              <option value="ULTRASONIC" class="bg-[var(--color-pure-black)]">ULTRASONIC</option>
+              <option value="DHT" class="bg-[var(--color-pure-black)]">DHT</option>
             </select>
           </div>
         </div>
@@ -61,7 +61,7 @@
       
       <!-- I2C SECTION -->
       <section class="border-2 border-gray-800 p-8 relative">
-        <h2 class="absolute -top-4 left-4 bg-[#0F0F0F] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
+        <h2 class="absolute -top-4 left-4 bg-[var(--color-pure-black)] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
           I2C Sensors
         </h2>
         
@@ -88,7 +88,7 @@
 
       <!-- KEYS SECTION -->
       <section class="border-2 border-gray-800 p-8 relative">
-        <h2 class="absolute -top-4 left-4 bg-[#0F0F0F] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
+        <h2 class="absolute -top-4 left-4 bg-[var(--color-pure-black)] px-4 font-['Anton'] text-2xl uppercase tracking-wide text-white">
           LoRaWAN Keys
         </h2>
         
@@ -117,7 +117,7 @@
       <!-- ACTION BUTTON -->
       <div class="pt-8">
         <button type="submit" data-test="btn-generate"
-          class="w-full border-2 border-white bg-white text-black font-['Anton'] text-3xl uppercase tracking-wider py-4 hover:bg-black hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[#0F0F0F]">
+          class="w-full border-2 border-white bg-white text-black font-['Anton'] text-3xl uppercase tracking-wider py-4 hover:bg-black hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-4 focus:ring-offset-[var(--color-pure-black)]">
           Generate
         </button>
       </div>

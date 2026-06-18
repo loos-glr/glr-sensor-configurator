@@ -7,41 +7,41 @@
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Montserrat:wght@900&display=swap" rel="stylesheet">
 </head>
-<body class="font-body antialiased selection:bg-glr-neon selection:text-black">
+<body class="font-body antialiased selection:bg-acid-green selection:text-black">
 
     <header class="relative w-full py-6 px-6 border-b border-gray-800">
         <div class="flex justify-between items-center max-w-7xl mx-auto px-4 relative">
             <a href="index.html" class="text-left hover:opacity-80 transition-opacity">
-                <h2 class="text-glr-neon font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
+                <h2 class="text-acid-green font-bold tracking-widest uppercase mb-1 text-xs">Hardware Setup V2.7</h2>
                 <h1 class="font-display text-2xl md:text-3xl uppercase leading-tight">
-                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-glr-neon to-green-600">Configurator</span>
+                    Sensor <span class="text-transparent bg-clip-text bg-gradient-to-r from-acid-green to-green-600">Configurator</span>
                 </h1>
             </a>
             
             <div class="relative">
-                <button id="menuBtn" class="text-white hover:text-glr-neon focus:outline-none transition-colors">
+                <button id="menuBtn" class="text-white hover:text-acid-green focus:outline-none transition-colors">
                     <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path></svg>
                 </button>
                 
-                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[#0F0F0F] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
+                <div id="dropdownMenu" class="hidden absolute right-0 mt-4 w-56 bg-[var(--color-pure-black)] border border-gray-800 rounded shadow-xl z-50 overflow-hidden">
                     <a href="index.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Configurator</a>
-                    <a href="hardware.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-glr-neon transition-colors border-b border-gray-800">Hardware Guide</a>
+                    <a href="hardware.html" class="block px-5 py-3 text-sm text-white bg-gray-900 border-l-4 border-acid-green transition-colors border-b border-gray-800">Hardware Guide</a>
                     <a href="board.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-gray-800">Board Layout</a>
-                    <a href="faq.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-glr-neon border-opacity-0 hover:border-glr-neon">FAQ & Data</a>
+                    <a href="faq.html" class="block px-5 py-3 text-sm text-gray-400 hover:text-white hover:bg-gray-800 transition-colors border-b border-acid-green border-opacity-0 hover:border-acid-green">FAQ & Data</a>
                 </div>
             </div>
         </div>
     </header>
 
     <main class="max-w-7xl mx-auto px-4 py-12 flex-grow">
-        <div class="mb-8 border-l-4 border-glr-neon pl-4">
+        <div class="mb-8 border-l-4 border-acid-green pl-4">
             <h2 class="font-display text-2xl uppercase mb-1">Hardware Guide</h2>
-            <p class="text-sm text-glr-gray">Overview of available Grove sensors and what they measure.</p>
+            <p class="text-sm text-on-surface-variant">Overview of available Grove sensors and what they measure.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/light.png" alt="Light Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -51,7 +51,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/sound.png" alt="Sound Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -61,7 +61,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/temperature.png" alt="Temperature Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -71,7 +71,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/rotary.png" alt="Rotary Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -81,7 +81,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/button.png" alt="Button" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -91,7 +91,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/ultrasonic.png" alt="Ultrasonic Distance" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -101,7 +101,7 @@
                 </div>
             </div>
             
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/temp-humidity.png" alt="Temp & Humidity Sensor" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -111,7 +111,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/BMI088.png" alt="BMI088" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="bg-[#0F0F0F] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-glr-neon transition-colors">
+            <div class="bg-[var(--color-pure-black)] border border-gray-800 rounded-lg overflow-hidden flex flex-col hover:border-acid-green transition-colors">
                 <button class="modal-trigger h-48 w-full bg-gray-900 border-b border-gray-800 relative cursor-zoom-in group overflow-hidden">
                     <img src="/static/MMA7660.png" alt="MMA7660" class="w-full h-full object-cover opacity-80 mix-blend-screen group-hover:opacity-100 transition-opacity">
                 </button>
@@ -140,14 +140,14 @@
             <p class="text-gray-500 text-xs max-w-md mx-auto mb-4">
                 Digital Design System v1.0. Strictly confidential. Use for internal development of apps and web interfaces only.
             </p>
-            <div class="text-glr-neon text-[10px] tracking-widest uppercase">
+            <div class="text-acid-green text-[10px] tracking-widest uppercase">
                 End of Transmission
             </div>
         </div>
     </footer>
 
     <div id="imageModal" class="fixed inset-0 z-[100] hidden flex items-center justify-center bg-black/90 backdrop-blur-sm transition-opacity duration-300 opacity-0">
-        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-glr-neon transition-colors z-[110]">
+        <button id="closeModal" class="absolute top-6 right-6 text-white hover:text-acid-green transition-colors z-[110]">
             <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
         </button>
         <div class="relative w-full h-full flex items-center justify-center overflow-hidden p-4">
